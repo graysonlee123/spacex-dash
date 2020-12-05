@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="text-center">
     <div v-if="!loading && upcomingMissions.length">
       <MissionCard
         v-for="mission in upcomingMissions"
@@ -8,6 +8,7 @@
       />
     </div>
     <button
+      class="py-2 px-4 bg-white font-bold uppercase m-8"
       @click="
         getUpcomingMissions('https://api.spacexdata.com/v3/launches/upcoming', {
           method: 'GET',
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import MissionCard from "@/components/MissionCard";
+import MissionCard from "@/components/missioncard/MissionCard";
 
 export default {
   name: "Home",
@@ -38,6 +39,8 @@ export default {
   },
   methods: {
     getUpcomingMissions: async function(url, options) {
+      this.loading = true;
+
       const response = await fetch(url, options);
 
       this.upcomingMissions = await response.json();
