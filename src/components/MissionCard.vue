@@ -2,7 +2,7 @@
   <div class="card">
     <p class="faint">Mission Details</p>
     <p>
-      {{mission.details || 'No details provided'}}
+      {{ mission.details || "No details provided" }}
     </p>
     <table>
       <tr v-if="mission.flight_number">
@@ -10,7 +10,7 @@
           Flight Number
         </td>
         <td>
-          {{mission.flight_number}}
+          {{ mission.flight_number }}
         </td>
       </tr>
       <tr v-if="mission.launch_date_utc">
@@ -18,7 +18,7 @@
           Launch Date
         </td>
         <td>
-          {{mission.launch_date_utc}}
+          {{ mission.launch_date_utc }}
         </td>
       </tr>
       <tr v-if="mission.last_date_update">
@@ -26,7 +26,7 @@
           Last Updated
         </td>
         <td>
-          {{dateForHumans(mission.last_date_update)}}
+          {{ dateForHumans(mission.last_date_update) }}
         </td>
       </tr>
       <tr>
@@ -34,7 +34,7 @@
           Launch Site
         </td>
         <td>
-          {{mission.launch_site.site_name_long || 'Not Provided'}}
+          {{ mission.launch_site.site_name_long || "Not Provided" }}
         </td>
       </tr>
     </table>
@@ -42,22 +42,22 @@
 </template>
 
 <script>
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export default {
-  name: 'MissionCard',
+  name: "MissionCard",
   props: {
     mission: {
       type: Object,
-      required: true,
+      required: true
     }
   },
   methods: {
     dateForHumans: function(date) {
-      return dayjs(date).format('MMMM DD, YYYY HH:mma')
+      return dayjs(date).format("MMMM DD, YYYY HH:mma");
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -75,7 +75,7 @@ export default {
 .faint {
   opacity: 0.25;
   font-weight: bold;
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   padding-right: 1rem;
 }
